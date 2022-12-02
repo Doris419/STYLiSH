@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+</head>
+<body>
+    <form enctype="multipart/form-data" action="/admin/product.html" method="POST">
+        <div>
+            Product name:
+            <input type="text" id = "name" name="name">
+        </div>
+        <div>
+            Product price:
+            <input type="number" id = "price" name="price">
+        </div>
+        <div>
+            Product color
+            <input type="color" id="color" name="color" value="#e66465">
+        </div>
+        <div>
+            Product size:
+            <select name="size" id="size">
+                <option>S</option>
+                <option>M</option>
+                <option>L</option>
+            </select>
+        </div>
+        <div>
+            Product num:
+            <input type="number" id = "num" name="num">
+        </div>
+        <div>
+            Categories:
+            <select name="cate" id="cate">
+                <option>women</option>
+                <option>men</option>
+                <option>accessories</option>
+            </select>
+        </div>
+        <div>
+            Material:<br>
+            <textarea name="material" id="material" rows="6" cols="40"></textarea>
+        </div>
+        <div>
+            More information about product:<br>
+            <textarea name="more" id="more" rows="10" cols="40"></textarea>
+        </div>
+        <div>
+            <input type="file" name="img" id="img">
+        </div>
+        <div>
+            <input type ="submit" name = "submit" class="btn" value="Upload">
+        </div>
+    </form>
+</body>
+</html>

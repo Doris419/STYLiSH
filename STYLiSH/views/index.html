@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel = "stylesheet" href = "./index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class='wrapper'>
+    <header class ="header">
+        <a class="logo-link" href="http://localhost:8000/index.html"><img class="logo" src="./images/logo.png"></a>
+        <div class ="cate1">
+            <button class="astext1" id="cate1">女   裝</button> 
+            <p> | </p>
+            <button class="astext1" id="cate2">男   裝</button>
+            <p> | </p>
+            <button class="astext1" id="cate3">配   件</button>
+        </div>
+        <div class="box">
+            <div class="container-1">
+                <input type="search" class="search1" id="search1" placeholder="" />
+                <button class = "searchbtn1" type="button" id="searchbtn1"><img src="./images/search.png"></button>
+            </div>
+                <button class = "cart" type="button"><img src="./images/cart.png"></button>
+                <button class = "cart" type="button"><img src="./images/member.png"></button>
+        </div>
+        <div class="container-1">
+            <input type="search" class="search2" id="search2" placeholder="" />
+            <button class = "searchbtn2" type="button" id="searchbtn2"><img src="./images/search.png"></button>
+
+        </div>
+    </header>
+
+    <div class="hr">
+        <div class ="cate2">
+            <button class="astext2" id="cates1">女   裝</button> 
+            <font color="white">|</font>
+            <button class="astext2" id="cates2">男   裝</button>
+            <font color="white">|</font>
+            <button class="astext2" id="cates3">配   件</button>
+        </div>
+    </div>
+    <nav class="nav">
+        <img class="banner" src="./images/banner.jpg">
+        <div style="position:absolute;width:138px;height:10px;" class="dots">
+            <button class = "mediabtn" type="button"><img class="dot" src="./images/dottt.png"></button>
+            <button class = "mediabtn" type="button"><img class="dot" src="./images/dottt.png"></button>
+            <button class = "mediabtn" type="button"><img class="dot" src="./images/dottt.png"></button>
+            <button class = "mediabtn" type="button"><img class="dot" src="./images/dottt.png"></button>
+            <button class = "mediabtn" type="button"><img class="dot" src="./images/dottt.png"></button>
+        </div>
+    </nav>
+    <div class="bigarticle">
+    <article class="article" id="article">
+    </article>
+</div>
+</div>
+    <footer class="footer1">
+        <div class="about">
+            <button class = "fabout" type="button">關於STYLiSH</button>
+            <font color="white">|</font>
+            <button class = "fabout" type="button">服務條款</button>
+            <font color="white">|</font>
+            <button class = "fabout" type="button">隱私政策</button>
+            <font color="white">|</font>
+            <button class = "fabout" type="button">聯絡我們</button>
+            <font color="white">|</font>
+            <button class = "fabout" type="button">FAQ</button>
+        </div>
+        <div class="fpicture">
+            <button class = "mediabtn" type="button"><img src="./images/line.png"></button>
+            <button class = "mediabtn" type="button"><img src="./images/twitter.png"></button>
+            <button class = "mediabtn" type="button"><img src="./images/facebook.png"></button>
+        </div>
+        <p style="color:grey"> ©2018. All rights reserved.</p>
+    </footer>
+    <footer class="footer2">
+        <div class="btnabout">
+        <div class="about">
+            <div class="about1">
+                <button class = "fabout" type="button">關於STYLiSH</button>
+                <button class = "fabout" type="button">服務條款</button>
+            </div>
+            <div class="about2">
+                <button class = "fabout" type="button">隱私政策</button>
+                <button class = "fabout" type="button">聯絡我們</button>
+            </div>
+            <div class="about2">
+                <button class = "fabout" type="button">FAQ</button>
+            </div>
+        </div>
+            <div class="fpicture">
+                <button class = "mediabtn" type="button"><img src="./images/line.png"></button>
+                <button class = "mediabtn" type="button"><img src="./images/twitter.png"></button>
+                <button class = "mediabtn" type="button"><img src="./images/facebook.png"></button>
+            </div>
+        </div>
+            <p style="color:grey" class="patent"> ©2018. All rights reserved.</p>
+    </footer>
+    <div class="fixedbanner">
+        <div class="fixedbtn">
+        <button class="fixedbtn1"><img src="./images/cart-mobile.png">購物車</button> 
+        <font color="white">|</font>
+        <button class="fixedbtn1"><img src="./images/member-mobile.png">會員</button>
+        </div>
+    </div>
+</body>
+
+<script>
+    var funcond = 1;
+    // var catenum = 0;
+//女裝
+var btnOn1 = document.querySelectorAll('#cate1');
+btnOn1[0].addEventListener('click', function (e) {
+    pagechange("women");
+});
+var btnOns1 = document.querySelectorAll('#cates1');
+btnOns1[0].addEventListener('click', function (e) {
+    pagechange("women");
+});
+//男裝
+var btnOn2 = document.querySelectorAll('#cate2');
+btnOn2[0].addEventListener('click', function (e) {
+    pagechange("men");
+});
+
+var btnOns2 = document.querySelectorAll('#cates2');
+btnOns2[0].addEventListener('click', function (e) {
+    pagechange("men");
+});
+//飾品
+var btnOn3 = document.querySelectorAll('#cate3');
+btnOn3[0].addEventListener('click', function (e) {
+    pagechange("accessories");
+});
+var btnOns3 = document.querySelectorAll('#cates3');
+btnOns3[0].addEventListener('click', function (e) {
+    pagechange("accessories");
+});
+//搜索
+var searchbtn1 = document.querySelector('#searchbtn1');
+var search1 = document.querySelector('#search1');
+searchbtn1.addEventListener('click', function (e) {
+    buttonselect("1");
+})
+var searchbtn2 = document.querySelector('#searchbtn2');
+var search2 = document.querySelector('#search2');
+searchbtn2.addEventListener('click', function (e) {
+    buttonselect("2");
+})
+
+function buttonselect(i){
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+    console.log(i);
+    funcond = 0;
+    if(i==1){
+        console.log('hi')
+        console.log(search1.value)
+        var url= `http://localhost:8000/api/v1/product/search?keyword=${search1.value}`;
+    }else{
+        var url= `http://localhost:8000/api/v1/product/search?keyword=${search2.value}`;
+    }
+    let xh = new XMLHttpRequest();
+    xh.open('GET',url,true);
+    xh.send();
+    xh.onreadystatechange = function(){
+     if(this.readyState === 4 && this.status === 200){
+     let response = JSON.parse(this.response);
+     console.log(response);
+     var article = document.querySelector('#article');
+     article.innerHTML=" ";
+    for(var i=0;i<response.length;i++){
+     article.innerHTML+= `\
+     <div class="section" id='section${i}'>\
+     <button class = "pdbtn" type="button"><img class="productimg" id="productimg${i}" src="${response[i]["img"]}"></button>\
+            <div class="colorchoice">\
+                <button class = "cobtn" type="button" style="background-color:#ffffff;width:24px;height:24px;"></button>\
+                <button class = "cobtn" type="button" style="background-color:#ddffbb;width:24px;height:24px;"></button>\
+                <button class = "cobtn" type="button" style="background-color:#cccccc;width:24px;height:24px;"></button>\
+            </div>\
+            <div class="product" id="productname${i}">${response[i]["name"]}</div>\
+            <div class="product" id="productprice${i}">TWD. ${response[i]["price"]}</div>\
+            <div>`
+     }
+    }
+}
+}
+var concate = 'nooooo';
+function pagechange(cate){
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+    console.log(concate == cate);
+    if(concate != cate){
+    funcond = 0;
+    var paging=0;
+    concate = cate;
+    console.log(cate+ " cate")
+    console.log(concate+" cancate")
+    let url= `http://localhost:8000/api/v1/product/${cate}?paging=${paging}`;
+    let xh = new XMLHttpRequest();
+    xh.open('GET',url,true);
+    xh.send();
+    xh.onreadystatechange = function(){
+    if(this.readyState === 4 && this.status === 200){
+    let response = JSON.parse(this.response);
+    //  console.log(response);
+    var article = document.querySelector('#article');
+    article.innerHTML=" ";
+    for(var i=0;i<response.length;i++){
+     article.innerHTML+= `\
+     <div class="section" id='section${i}'>\
+     <button class = "pdbtn" type="button"><img class="productimg" id="productimg${i}" src="${response[i]["img"]}"></button>\
+            <div class="colorchoice">\
+                <button class = "cobtn" type="button" style="background-color:#ffffff;width:24px;height:24px;"></button>\
+                <button class = "cobtn" type="button" style="background-color:#ddffbb;width:24px;height:24px;"></button>\
+                <button class = "cobtn" type="button" style="background-color:#cccccc;width:24px;height:24px;"></button>\
+            </div>\
+            <div class="product" id="productname${i}">${response[i]["name"]}</div>\
+            <div class="product" id="productprice${i}">TWD. ${response[i]["price"]}</div>\
+            <div>`
+    }
+
+        paging=0;
+        var timeout = false; 
+        $(window).scroll(function () {
+        var scrollTop = $(this).scrollTop();
+        var scrollHeight = $('body').attr("scrollHeight");
+        var clientHeight = document.documentElement.clientHeight;
+        if (scrollTop + clientHeight >= scrollHeight -5) {
+            let url= `http://localhost:8000/api/v1/product/${cate}?paging=${paging+1}`;
+            let xh = new XMLHttpRequest();
+            xh.open('GET',url,true);
+            xh.send();
+            xh.onreadystatechange = function(){
+                if(this.readyState === 4 && this.status === 200){
+                    let response = JSON.parse(this.response);
+                    if(response.length==0){
+                        concate = 'nooooo';
+                        return null;     
+                    }else if(response.length!=0){
+                        showLoading();
+                        concate = 'nooooo';
+                        // console.log(`${paging+1}`+"happy")
+                    }
+            }
+            }
+        }
+        })
+    
+
+    function showLoading() {
+        if (timeout){clearTimeout(timeout);}  
+        timeout=setTimeout(function () {
+        //paging++;
+        // console.log(`${p}`+"sad")
+        // console.log(paging);
+        let url= `http://localhost:8000/api/v1/product/${cate}?paging=${paging+1}`
+        // console.log(paging+"sad");
+        paging++;
+        let xh = new XMLHttpRequest();
+        xh.open('GET',url,true);
+        xh.send();
+        xh.onreadystatechange = function(){
+        if(this.readyState === 4 && this.status === 200){
+        let response = JSON.parse(this.response);
+        //  paging++;
+        //  console.log(response);
+        var article = document.querySelector('#article');
+        console.log(`${paging}`+"saddddd");
+        if(response.length!=0){
+            // console.log(`${paging}`+"happppppyyyyy");
+        for(var i=0;i<response.length;i++){
+        article.innerHTML+= `\
+        <div class="section" id='section${i}'>\
+        <button class = "pdbtn" type="button"><img class="productimg" id="productimg${i}" src="${response[i]["img"]}"></button>\
+                <div class="colorchoice">\
+                    <button class = "cobtn" type="button" style="background-color:#ffffff;width:24px;height:24px;"></button>\
+                    <button class = "cobtn" type="button" style="background-color:#ddffbb;width:24px;height:24px;"></button>\
+                    <button class = "cobtn" type="button" style="background-color:#cccccc;width:24px;height:24px;"></button>\
+                </div>\
+                <div class="product" id="productname${i}">${response[i]["name"]}</div>\
+                <div class="product" id="productprice${i}">TWD. ${response[i]["price"]}</div>\
+                <div>`
+                }}}}
+            }, 500);  
+                    }
+    }
+    }
+}
+}
+
+window.onload = function(){
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+    var paging=0;
+    var p =1;
+    let url= `http://localhost:8000/api/v1/all/product?paging=0`;
+    let xh = new XMLHttpRequest();
+    xh.open('GET',url,true);
+    xh.send();
+    xh.onreadystatechange = function(){
+        if(this.readyState === 4 && this.status === 200){
+            let response = JSON.parse(this.response);
+            // console.log(response+"no")
+            var article = document.querySelector('#article');
+            article.innerHTML="";
+            for(var i=0;i<response.length;i++){
+            article.innerHTML+= `\
+            <div class="section" id='section${i}'>\
+            <button class = "pdbtn" type="button"><img class="productimg" id="productimg${i}" src="${response[i]["img"]}"></button>\
+                    <div class="colorchoice">\
+                        <button class = "cobtn" type="button" style="background-color:#ffffff;width:24px;height:24px;"></button>\
+                        <button class = "cobtn" type="button" style="background-color:#ddffbb;width:24px;height:24px;"></button>\
+                        <button class = "cobtn" type="button" style="background-color:#cccccc;width:24px;height:24px;"></button>\
+                    </div>\
+                    <div class="product" id="productname${i}">${response[i]["name"]}</div>\
+                    <div class="product" id="productprice${i}">TWD. ${response[i]["price"]}</div>\
+                    <div>`
+                    }
+    paging=0;
+    var timeout = false; 
+    
+    $(window).scroll(function () {
+     if(funcond==1){
+        console.log(funcond)
+    var scrollTop = $(this).scrollTop();
+    var scrollHeight = $('body').attr("scrollHeight");
+    var clientHeight = document.documentElement.clientHeight;
+    if (scrollTop + clientHeight >= scrollHeight -5) {
+        let url= `http://localhost:8000/api/v1/all/product?paging=${paging+1}`;
+        let xh = new XMLHttpRequest();
+        xh.open('GET',url,true);
+        xh.send();
+        xh.onreadystatechange = function(){
+            if(this.readyState === 4 && this.status === 200){
+                let response = JSON.parse(this.response);
+                if(response.length==0){
+                    return null;     
+                }else if(response.length!=0){
+                    showLoading();
+                    // console.log(`${paging+1}`+"happy")
+                }
+        }
+        }
+    }
+    }
+    })
+
+    function showLoading() {
+        if (timeout){clearTimeout(timeout);}  
+        timeout=setTimeout(function () {
+        //paging++;
+        // console.log(`${p}`+"sad")
+        // console.log(paging);
+        let url= `http://localhost:8000/api/v1/all/product?paging=${paging+1}`
+        // console.log(paging+"sad");
+        paging++;
+        let xh = new XMLHttpRequest();
+        xh.open('GET',url,true);
+        xh.send();
+        xh.onreadystatechange = function(){
+        if(this.readyState === 4 && this.status === 200){
+        let response = JSON.parse(this.response);
+        var article = document.querySelector('#article');
+        if(response.length!=0){
+        for(var i=0;i<response.length;i++){
+        article.innerHTML+= `\
+        <div class="section" id='section${i}'>\
+        <button class = "pdbtn" type="button"><img class="productimg" id="productimg${i}" src="${response[i]["img"]}"></button>\
+                <div class="colorchoice">\
+                    <button class = "cobtn" type="button" style="background-color:#ffffff;width:24px;height:24px;"></button>\
+                    <button class = "cobtn" type="button" style="background-color:#ddffbb;width:24px;height:24px;"></button>\
+                    <button class = "cobtn" type="button" style="background-color:#cccccc;width:24px;height:24px;"></button>\
+                </div>\
+                <div class="product" id="productname${i}">${response[i]["name"]}</div>\
+                <div class="product" id="productprice${i}">TWD. ${response[i]["price"]}</div>\
+                <div>`
+                }}}}
+                
+            }, 300);  
+                    }
+        }
+        
+    }
+}
+</script>
+</html>

@@ -1,0 +1,26 @@
+.up{
+    display: flex;
+    flex-wrap: nowrap;
+}
+.revenue{
+    width: 45%;
+    margin-right: 150px;
+    margin-left: 150px;
+}
+.pieChart{
+    width: 45%;
+    margin-left: 150px;
+}
+.down{
+    display: flex;
+    flex-wrap: nowrap;
+    
+}
+.histogramChart{
+    width: 45%;
+    margin-right: 150px
+}
+.stackedbarChart{
+    width: 45%;
+    margin-left: 150px
+}

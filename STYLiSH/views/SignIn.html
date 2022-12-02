@@ -1,0 +1,31 @@
+<html>
+  <body>
+    <div class="system_name">
+      <h2>Stylish</h2>
+    </div>
+    
+    <div class="login_page">
+      <div id="container1">
+
+        <div class="login">  
+          
+          <h3>登入 Login</h3>
+
+          <form className="formm" action="/user/SignIn" method="POST">
+            <input type="text" id="email" name="email" placeholder="Email" required>
+            <div>
+            <input type="password" id="password" name="password" placeholder="密碼" required>
+            </div>
+            <div>
+            <input type="submit" value="登入" class="submit" onclick="location.href=''">
+            </div>
+          </form>  
+
+          <a href="http://localhost:3000/user/SignUp">註冊帳號</a>
+          
+        </div>
+      </div>
+    </div>
+        
+  </body>
+</html>

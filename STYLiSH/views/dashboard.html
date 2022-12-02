@@ -1,0 +1,200 @@
+<html>
+    <head>
+        <title>Dashboard</title>
+        <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
+        <link rel="stylesheet" href="./dashboard.css">
+    </head>
+    <body>
+        <div class="up">
+            <h1 id="revenue" class="revenue">Total Revenue: </h1>
+            
+            <div class="pieChart">
+                <div id="pie"></div>
+            </div>
+        </div>
+
+        <div class="down">
+            <div class="histogramChart">
+                <div id="histogram"></div>
+            </div>
+
+            <div class="stackedbarChart">
+                <div id="stackedbar"></div>
+            </div>
+        </div>
+
+    <script>
+        var revenue = document.querySelector('#revenue');
+        fetch("http://44.226.224.61:8000/order/data")
+            .then(r => r.json())
+            .then(data => {
+
+                //Total Revenue
+                var total = 0;
+                for(var i=0;i<data.length;i++){
+                    total+=data[i]["total"];
+                }
+                revenue.innerHTML+=total;
+                
+                //Color pie chart
+                var color = []
+                var colorTimes = []
+                for(var i=0;i<data.length;i++){
+                    for(var j=0;j<JSON.parse(data[i]["list"]).length;j++){
+                        var colorIndex = color.indexOf(JSON.parse(data[i]["list"])[j]["color"]);
+                        if(colorIndex==-1){
+                            color.push(JSON.parse(data[i]["list"])[j]["color"])
+                            colorTimes.push(1)
+                        }else{
+                            var t = colorTimes[colorIndex]
+                            colorTimes.splice(colorIndex,1,t+1);
+                        }
+                    }
+                }
+
+                var datapic = [{
+                type: "pie",
+                marker: {
+                    colors: color
+                },
+                values: colorTimes,
+                labels: color,
+                textinfo: "label+percent",
+                insidetextorientation: "radial",
+                automargin: true
+                 }]
+                var layout = {
+                    title: "Producr sold percentage in different colors",
+                    height: 450,
+                    width: 450,
+                }
+                Plotly.newPlot('pie', datapic, layout)
+
+                //Histogram Chart
+                var price = [];
+                var priceTimes = []
+                for(var i=0;i<data.length;i++){
+                    for(var j=0;j<JSON.parse(data[i]["list"]).length;j++){
+                        var priceIndex = price.indexOf(JSON.parse(data[i]["list"])[j]["price"]);
+                        if(priceIndex==-1){
+                            price.push(JSON.parse(data[i]["list"])[j]["price"])
+                            priceTimes.push(1)
+                        }else{
+                            var t = priceTimes[priceIndex]
+                            priceTimes.splice(priceIndex,1,t+1);
+                        }
+                    }
+                }
+
+                var trace = {
+                    x: price,
+                    type: 'histogram',
+                };
+                var datapic = [trace];
+                var layout = {
+                    title: "Producr sold quantity in different price range",
+                    xaxis: {
+                        title: 'Price Range',
+                    },
+                    yaxis: {
+                        title: 'Quantity',
+                    }
+                }
+                Plotly.newPlot('histogram', datapic,layout)
+
+
+                //Select sales top 5 products
+                var stableproductId = [];
+                var stableproductIndex = [];
+                var productId = [];
+                var productTimes = []
+                var popularProductId = [];
+                var popularIndex= [];
+                for(var i=0;i<data.length;i++){
+                    for(var j=0;j<JSON.parse(data[i]["list"]).length;j++){
+                        var productIndex = productId.indexOf(JSON.parse(data[i]["list"])[j]["id"]);
+                        if(productIndex==-1){
+                            productId.push(JSON.parse(data[i]["list"])[j]["id"])
+                            stableproductId.push(JSON.parse(data[i]["list"])[j]["id"])
+                            productTimes.push(1)
+                        }else{
+                            var t = productTimes[productIndex]
+                            productTimes.splice(productIndex,1,t+1);
+                        }
+                    }
+                }
+                for(var i=0;i<5;i++){
+                    var max = Math.max(...productTimes)
+                    var maxTimeIndex = productTimes.indexOf(max)
+                    popularIndex.push(maxTimeIndex)
+                    var maxProductId = productId[maxTimeIndex]
+                    stableproductIndex.push(stableproductId.indexOf(maxProductId))
+                    popularProductId.push("Product"+maxProductId)
+                    productTimes.splice(maxTimeIndex,1)
+                    productId.splice(maxTimeIndex,1)
+                }
+
+                //Stacked Bar Chart
+                var sizeS = [0,0,0,0,0];
+                var sizeM = [0,0,0,0,0];
+                var sizeL = [0,0,0,0,0];
+                for(var i=0;i<data.length;i++){
+                    for(var j=0;j<JSON.parse(data[i]["list"]).length;j++){
+                            if(stableproductId.indexOf(JSON.parse(data[i]["list"])[j]["id"])!=-1){
+                                if(JSON.parse(data[i]["list"])[j]["size"]=="S"){
+                                    sizeS[stableproductIndex[stableproductId.indexOf(JSON.parse(data[i]["list"])[j]["id"])]]++;
+                                }else if(JSON.parse(data[i]["list"])[j]["size"]=="M"){
+                                    sizeM[stableproductIndex[stableproductId.indexOf(JSON.parse(data[i]["list"])[j]["id"])]]++;
+                                }else if(JSON.parse(data[i]["list"])[j]["size"]=="L"){
+                                    sizeL[stableproductIndex[stableproductId.indexOf(JSON.parse(data[i]["list"])[j]["id"])]]++;
+                                }
+                            }else{
+                                console.log("no")
+                            }
+                    }
+                }
+
+                var product1 = {
+                    x: popularProductId,
+                    y: sizeS,
+                    name: 'S',
+                    type: 'bar'
+                };
+
+                var product2 = {
+                    x: popularProductId,
+                    y: sizeM,
+                    name: 'M',
+                    type: 'bar'
+                };
+
+                var product3 = {
+                    x: popularProductId,
+                    y: sizeL,
+                    name: 'L',
+                    type: 'bar'
+                };
+
+                var datapic = [product1, product2, product3];
+                var layout = {
+                    barmode: 'stack',
+                    title: "Quantity of top 5 sold product in different sizes",
+                    yaxis: {
+                        title: 'Quantity',
+                    }
+                }
+
+                Plotly.newPlot('stackedbar', datapic, layout);
+            })
+
+            
+            
+
+    </script>
+
+
+    </body>
+
+
+
+</html>

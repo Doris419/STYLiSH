@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./index.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class='wrapper'>
+        <header class="header">
+            <a class="logo-link" href="http://localhost:8000/index.html"><img class="logo" src="./images/logo.png"></a>
+            <div class="cate1">
+                <button class="astext1" id="cate1">女 裝</button>
+                <p> | </p>
+                <button class="astext1" id="cate2">男 裝</button>
+                <p> | </p>
+                <button class="astext1" id="cate3">配 件</button>
+            </div>
+            <div class="box">
+                <div class="container-1">
+                    <input type="search" class="search1" id="search1" placeholder="" />
+                    <button class="searchbtn1" type="button" id="searchbtn1"><img src="./images/search.png"></button>
+                </div>
+                <button class="cart" type="button"><img src="./images/cart.png"></button>
+                <button class="cart" type="button"><img src="./images/member.png"></button>
+            </div>
+            <div class="container-1">
+                <input type="search" class="search2" id="search2" placeholder="" />
+                <button class="searchbtn2" type="button" id="searchbtn2"><img src="./images/search.png"></button>
+
+            </div>
+        </header>
+
+        <div class="hr">
+            <div class="cate2">
+                <button class="astext2" id="cates1">女 裝</button>
+                <font color="white">|</font>
+                <button class="astext2" id="cates2">男 裝</button>
+                <font color="white">|</font>
+                <button class="astext2" id="cates3">配 件</button>
+            </div>
+        </div>
+        <nav class="nav">
+            <img class="banner" src="./images/banner.jpg">
+            <div style="position:absolute;width:138px;height:10px;" class="dots">
+                <button class="mediabtn" type="button"><img class="dot" src="./images/dottt.png"></button>
+                <button class="mediabtn" type="button"><img class="dot" src="./images/dottt.png"></button>
+                <button class="mediabtn" type="button"><img class="dot" src="./images/dottt.png"></button>
+                <button class="mediabtn" type="button"><img class="dot" src="./images/dottt.png"></button>
+                <button class="mediabtn" type="button"><img class="dot" src="./images/dottt.png"></button>
+            </div>
+        </nav>
+
+        <div class="bigarticle">
+            <article class="itemarticle" id="itemarticle">
+
+                <div class="psection" id='psection'>
+                    <div class="bigpitembtn">
+                        <button class="pitembtn" type="button"><img class="pitemimg" id="pitemimg"
+                                src="http://localhost:8000/w1.jpg" /></button>
+                    </div>
+
+                    <div class="pdetail" id="pdetail">
+                        <div class="product" id="productname">加大碼運動衫</div>
+                        <font color="grey">201807201824</font>
+                        <div class="product" id="productprice">TWD. 799</div>
+                        <hr>
+
+                        <div class="itemchoice">
+                            <p>顏色 |</p>
+                            <button class="cobtn" type="button"
+                                style="background-color:#ffffff;width:24px;height:24px;"></button>
+                            <button class="cobtn" type="button"
+                                style="background-color:#ddffbb;width:24px;height:24px;"></button>
+                            <button class="cobtn" type="button"
+                                style="background-color:#cccccc;width:24px;height:24px;"></button>
+                        </div>
+                        <div class="itemchoice">
+                            <p>尺寸 | </p>
+                            <button class="cobtns" type="button"
+                                style="background-color:#f9f6f6;width:26px;height:26px;">S</button>
+                            <button class="cobtns" type="button"
+                                style="background-color:#ffffff;width:26px;height:26px;">M</button>
+                            <button class="cobtns" type="button"
+                                style="background-color:#ffffff;width:26px;height:26px;">L</button>
+                        </div>
+                        <div class="itemchoice1">
+                            <p class="num">數量 | </p>
+                            <form id='myform' method='POST' action='#'>
+                                <input type='button' value='-' class='qtyminus' field='quantity' />
+                                <input type='text' name='quantity' value='1' class='qty' />
+                                <input type='button' value='+' class='qtyplus' field='quantity' />
+                            </form>
+                            <script>
+                                $(function () {
+                                    // This button will increment the value
+                                    $('.qtyplus').click(function (e) {
+                                        // Stop acting like a button
+                                        e.preventDefault();
+                                        // Get the field name
+                                        fieldName = $(this).attr('field');
+                                        // Get its current value
+                                        var currentVal = parseInt($('input[name=' + fieldName + ']').val());
+                                        // If is not undefined
+                                        if(currentVal<10){
+                                            if (!isNaN(currentVal)) {
+                                                // Increment
+                                                $('input[name=' + fieldName + ']').val(currentVal + 1);
+                                            } else {
+                                                // Otherwise put a 0 there
+                                                $('input[name=' + fieldName + ']').val(0);
+                                            }
+                                        }
+                                    });
+                                    // This button will decrement the value till 0
+                                    $(".qtyminus").click(function (e) {
+                                        // Stop acting like a button
+                                        e.preventDefault();
+                                        // Get the field name
+                                        fieldName = $(this).attr('field');
+                                        // Get its current value
+                                        var currentVal = parseInt($('input[name=' + fieldName + ']').val());
+                                        // If it isn't undefined or its greater than 0
+                                        if (!isNaN(currentVal) && currentVal > 0) {
+                                            // Decrement one
+                                            $('input[name=' + fieldName + ']').val(currentVal - 1);
+                                        } else {
+                                            // Otherwise put a 0 there
+                                            $('input[name=' + fieldName + ']').val(0);
+                                        }
+                                    });
+                                });
+                            </script>
+                                <!-- <p class="num">數量 | </p>
+                                    <select class="itemchoicenum" id="itemnum">
+                                        <option>請選擇數量</option>
+                                        <script>
+                                            var itemnum = document.querySelector('#itemnum');
+                                            for (var i=0;i<10;i++){
+                                                itemnum.options[itemnum.options.length] = new Option(i+1, i);
+                                            }
+                                        </script>
+                                    </select> -->
+                        </div>
+                        <div>
+                            <button class="itembtn1" type="button"
+                                style="color: #ffffff; background-color:#000000;width:78%;height:40px;">加入購物車</button>
+                            <button class="itembtn2" type="button"
+                                style="color: #ffffff; background-color:#000000;width:95%;height:50px;">
+                                <i class="btnfont">加入購物車</i></button>
+                        </div>
+                        <div class="mateiralfont">
+                            <font class="mateiralf" color="black">實品顏色依單品照為主 <br><br> 棉 100%<br> 厚薄：薄<br> 彈性：無 <br><br>
+                                清洗：手洗，溫水<br> 產地：中國 </font><br>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="itemdetail">
+                    <font color="brown">更多產品資訊 </font>
+                    <hr width="88%">
+                </div>
+                <div class="itemmore">
+                    <font color="black">O.N.S is all about options, which is why we took our staple polo shirt and
+                        upgraded it with slubby linen jersey, making it even lighter for those who prefer their summer
+                        style extra-breezy. </font>
+                </div>
+                <div class="bigitemimg">
+                    <img class="itemimg" src="./images/image1.jpg" />
+                    <img class="itemimg" src="./images/image2.jpg" />
+                </div>
+            </article>
+        </div>
+
+
+
+    </div>
+    <footer class="footer1">
+        <div class="about">
+            <button class="fabout" type="button">關於STYLiSH</button>
+            <font color="white">|</font>
+            <button class="fabout" type="button">服務條款</button>
+            <font color="white">|</font>
+            <button class="fabout" type="button">隱私政策</button>
+            <font color="white">|</font>
+            <button class="fabout" type="button">聯絡我們</button>
+            <font color="white">|</font>
+            <button class="fabout" type="button">FAQ</button>
+        </div>
+        <div class="fpicture">
+            <button class="mediabtn" type="button"><img src="./images/line.png"></button>
+            <button class="mediabtn" type="button"><img src="./images/twitter.png"></button>
+            <button class="mediabtn" type="button"><img src="./images/facebook.png"></button>
+        </div>
+        <p style="color:grey"> ©2018. All rights reserved.</p>
+    </footer>
+    <footer class="footer2">
+        <div class="btnabout">
+            <div class="about">
+                <div class="about1">
+                    <button class="fabout" type="button">關於STYLiSH</button>
+                    <button class="fabout" type="button">服務條款</button>
+                </div>
+                <div class="about2">
+                    <button class="fabout" type="button">隱私政策</button>
+                    <button class="fabout" type="button">聯絡我們</button>
+                </div>
+                <div class="about2">
+                    <button class="fabout" type="button">FAQ</button>
+                </div>
+            </div>
+            <div class="fpicture">
+                <button class="mediabtn" type="button"><img src="./images/line.png"></button>
+                <button class="mediabtn" type="button"><img src="./images/twitter.png"></button>
+                <button class="mediabtn" type="button"><img src="./images/facebook.png"></button>
+            </div>
+        </div>
+        <p style="color:grey" class="patent"> ©2018. All rights reserved.</p>
+    </footer>
+    <div class="fixedbanner">
+        <div class="fixedbtn">
+            <button class="fixedbtn1"><img src="./images/cart-mobile.png">購物車</button>
+            <font color="white">|</font>
+            <button class="fixedbtn1"><img src="./images/member-mobile.png">會員</button>
+        </div>
+    </div>
+</body>
+
+<script>
+    const res = fetch("http://localhost:8000/api/v1/product/details/1")
+        .then(r => r.json())
+        .then(data => {
+            var name = data[0]['name'];
+            var price = data[0]['price'];
+            var material = data[0]['material'];
+            var more = data[0]['more'];
+            var img = data[0]['img'];
+            var color = data[0]['color'];
+            var size = data[0]['size'];
+            var num = data[0]['num'];
+        })
+</script>
+
+</html>

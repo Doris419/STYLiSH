@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script text="text/javascript" src="https://js.tappaysdk.com/tpdirect/v5.13.1"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <!-- <link rel = "stylesheet" href = "./sign.css"> -->
+    <title>Connect payment with TapPay</title>
+</head>
+
+<body>
+    
+    <header>
+        <img class="logo" src="./images/logo.png">
+        <a href="https://www.fooish.com/" target="_blank" class="cate">女裝</a>
+        <a href="https://www.fooish.com/" target="_blank">男裝</a>
+        <a href="https://www.fooish.com/" target="_blank">配件</a>
+    </header>
+    <nav></nav>
+    <footer></footer>
+    <div style="width: 480px; margin: 50px auto;">
+    收件人姓名   
+    <input type="text" id="name" name="name" placeholder="Name" required><br>
+    E-mail   
+    <input type="text" id="email" name="email" placeholder="E-mail" required><br>
+    手機   
+    <input type="phone" id="phone" name="phone" placeholder="Phone" required><br>
+    地址   
+    <input type="address" id="address" name="address" placeholder="Address" required><br>
+    配送時間   
+    <input type="radio" name="time" value="8:00-12:00"> 8:00-12:00
+    <input type="radio" name="time" value="14:00-18:00"> 14:00-18:00
+    <input type="radio" name="time" value="不指定"> 不指定
+    </div>           
+    <div style="width: 480px; margin: 50px auto;">
+        <label>CardView</label>
+        <div id="cardview-container"></div>
+        <button id="submit-button" onclick="onClick()">Get Prime</button>
+        <pre id="result1"></pre>
+        <pre id="result2"></pre>
+    </div>       
+    <script>
+    TPDirect.setupSDK(12348, "app_pa1pQcKoY22IlnSXq5m5WP5jFKzoRG58VEXpT7wU62ud7mMbDOGzCYIlzzLF", "sandbox")
+        var defaultCardViewStyle = {
+            color: 'rgb(0,0,0)',
+            fontSize: '15px',
+            lineHeight: '24px',
+            fontWeight: '300',
+            errorColor: 'red',
+            placeholderColor: ''
+        }
+        TPDirect.card.setup('#cardview-container', defaultCardViewStyle, { 
+        isUsedCcv: true,
+        isMaskCreditCardNumber: true,
+        maskCreditCardNumberRange: {
+        beginIndex: 6, 
+        endIndex: 11
+    }
+})
+        var request = new XMLHttpRequest();
+        var submitButton = document.querySelector('#submit-button')
+        var cardViewContainer = document.querySelector('#cardview-container')
+        
+        function onClick() {
+                       
+            var name = document.querySelector('#name').value
+            var phone = document.querySelector('#phone').value
+            var address = document.querySelector('#address').value
+            var email = document.querySelector('#email').value
+            var time = document.querySelector('input[name="time"]:checked').value;
+            
+            TPDirect.card.getPrime(function (result) {
+                var prime = result.card.prime
+                if (result.status !== 0) {
+                    console.log('getPrime 錯誤')
+                    return
+                }
+                alert('getPrime 成功')                            
+                document.querySelector('#result1').innerHTML = JSON.stringify(result, null, 4)
+
+                  //設定查詢字串
+                // var url = `http://localhost:3000/pay-by-prime?prime=${prime}`
+                // var xhr = new XMLHttpRequest();
+                // xhr.open("GET", url);  //建立連線，要求同步響應
+                // xhr.send();  //傳送請求
+                // console.log(xhr.responseText);
+
+                $.post('/pay-by-prime', {prime: prime,name: name,phone: phone,address: address,email: email,time: time}, function(data) {
+                    alert('付款成功')
+                    document.querySelector('#result2').innerHTML = JSON.stringify(data, null, 4)
+                })
+                })
+            }
+       
+    </script>
+</body>
+</html>
+
