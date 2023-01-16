@@ -1,7 +1,7 @@
 # STYLiSH
 
 ### Platform for online shopping
-![image](https://user-images.githubusercontent.com/111197945/212739839-484822b6-f77b-42d9-8b3b-45fc6f19a39a.png)
+![image](https://user-images.githubusercontent.com/111197945/212743488-e775fb3f-afb4-4b56-886e-1794e4f2a9b4.png)
 ![image](https://user-images.githubusercontent.com/111197945/212743418-a511348a-809c-4626-adf8-dc43d7ba2ffa.png)
 
 * Use menu on the top to select function.
