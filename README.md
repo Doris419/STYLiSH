@@ -31,7 +31,7 @@ DB_PWD= [PASSWORD]
 # Main features
 
 ### Login and Signup Page
-![image](https://user-images.githubusercontent.com/111197945/212742985-80d6b5e4-5863-42d8-aacb-84b6c0a426b2.png)
+![image](https://user-images.githubusercontent.com/111197945/212743265-f5ca58b3-c116-46a3-a68c-478172f03691.png)
 
 * Create a new account and use bcrypt to store password.
 * Login and see your account info.
