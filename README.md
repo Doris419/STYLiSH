@@ -2,6 +2,7 @@
 
 ### Platform for online shopping
 ![image](https://user-images.githubusercontent.com/111197945/212739839-484822b6-f77b-42d9-8b3b-45fc6f19a39a.png)
+![image](https://user-images.githubusercontent.com/111197945/212743418-a511348a-809c-4626-adf8-dc43d7ba2ffa.png)
 
 * Use menu on the top to select function.
 
@@ -37,10 +38,12 @@ DB_PWD= [PASSWORD]
 * Login and see your account info.
 * Store account secret info by JWT Token.
 
+
 ### Detail Page
 ![image](https://user-images.githubusercontent.com/111197945/212740360-6634f80f-7794-4573-b429-10141fd8ebff.png)
 * Check product details.
 * Add product's color, size, num to cart and store in local storage.
+
 
 ### Checkout Page
 ![image](https://user-images.githubusercontent.com/111197945/212740732-e624ae3d-5a89-4089-9244-c00f343ebd66.png)
